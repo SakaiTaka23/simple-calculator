@@ -5,7 +5,8 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/SakaiTaka23/simple-calculator/server/calc/calc.pb.go"
+	pb "server/calc"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -17,8 +18,23 @@ const (
 type server struct{}
 
 func (s *server) Addition(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
-	log.Printf("Recieved : %s , %s", r.GetNum1(), r.GetNum2())
-	return &pb.CalcResponse{r.GetNum1() + r.GetNum2()}, nil
+	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	return &pb.CalcResponse{Result: r.GetNum1() + r.GetNum2()}, nil
+}
+
+func (s *server) Division(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
+	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	return &pb.CalcResponse{Result: r.GetNum1() / r.GetNum2()}, nil
+}
+
+func (s *server) Multiplication(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
+	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	return &pb.CalcResponse{Result: r.GetNum1() * r.GetNum2()}, nil
+}
+
+func (s *server) Subtraction(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
+	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	return &pb.CalcResponse{Result: r.GetNum1() - r.GetNum2()}, nil
 }
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/SakaiTaka23
+module server
 
 go 1.14
 
