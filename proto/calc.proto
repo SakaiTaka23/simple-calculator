@@ -1,17 +1,17 @@
 syntax = "proto3";
 
 service CalcService {
-    rpc addition (HelloRequest) returns (HelloResponse);
-    rpc subtraction () returns ();
-    rpc multiplication () returns ();
-    rpc division () returns ();
+    rpc addition (CalcRequest) returns (CalcResponse);
+    rpc subtraction (CalcRequest) returns (CalcResponse);
+    rpc multiplication (CalcRequest) returns (CalcResponse);
+    rpc division (CalcRequest) returns (CalcResponse);
 }
 
 message CalcRequest {
-    int num1 = 1;
-    int num2 = 2;
+    uint32 num1 = 1;
+    uint32 num2 = 2;
 }
 
 message CalcResponse {
-    int result = 1;
+    uint32 result = 1;
 }
