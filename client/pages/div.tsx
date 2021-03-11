@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CalcServiceClient } from '../calc/CalcServiceClientPb';
 import { CalcRequest } from '../calc/calc_pb';
 
-const Add = () => {
+const Div = () => {
   const [a, setA] = useState(0);
   const [b, setB] = useState(0);
   const [result, setResult] = useState(0);
@@ -21,18 +21,18 @@ const Add = () => {
     request.setNum1(a);
     request.setNum2(b);
     const client = new CalcServiceClient('http://localhost:8080');
-    const response = await client.addition(request, {});
+    const response = await client.division(request, {});
     setResult(response.getResult());
   };
 
   return (
     <div className='App'>
       <input type='number' value={a} onChange={onChangeA} min={0} max={20} />
-      <input type='number' value={b} onChange={onChangeB} min={0} max={20} />
-      <button onClick={onClick}>Add</button>
-      <p>{`${a} + ${b} = ${result}`}</p>
+      <input type='number' value={b} onChange={onChangeB} min={1} max={20} />
+      <button onClick={onClick}>Divide</button>
+      <p>{`${a} / ${b} = ${result}`}</p>
     </div>
   );
 };
 
-export default Add;
+export default Div;
