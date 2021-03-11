@@ -18,22 +18,22 @@ const (
 type server struct{}
 
 func (s *server) Addition(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
-	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	log.Printf("Recieved : Add %d , %d", r.GetNum1(), r.GetNum2())
 	return &pb.CalcResponse{Result: r.GetNum1() + r.GetNum2()}, nil
 }
 
 func (s *server) Division(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
-	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	log.Printf("Recieved : Divide %d , %d", r.GetNum1(), r.GetNum2())
 	return &pb.CalcResponse{Result: r.GetNum1() / r.GetNum2()}, nil
 }
 
 func (s *server) Multiplication(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
-	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	log.Printf("Recieved : Multiply %d , %d", r.GetNum1(), r.GetNum2())
 	return &pb.CalcResponse{Result: r.GetNum1() * r.GetNum2()}, nil
 }
 
 func (s *server) Subtraction(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
-	log.Printf("Recieved : %d , %d", r.GetNum1(), r.GetNum2())
+	log.Printf("Recieved : Subtract %d , %d", r.GetNum1(), r.GetNum2())
 	return &pb.CalcResponse{Result: r.GetNum1() - r.GetNum2()}, nil
 }
 
