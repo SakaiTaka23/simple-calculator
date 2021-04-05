@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  api:
+  back:
     build:
       context: './backend'
       target: base
