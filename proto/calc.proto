@@ -1,18 +1,26 @@
 syntax = "proto3";
 
+// 四則演算をするためのサービス
 service CalcService {
+    // 足し算
     rpc addition (CalcRequest) returns (CalcResponse);
+    // 引き算
     rpc subtraction (CalcRequest) returns (CalcResponse);
+    // 掛け算
     rpc multiplication (CalcRequest) returns (CalcResponse);
+    // 割り算
     rpc division (CalcRequest) returns (CalcResponse);
+    // 余り計算 認証必須
     rpc remain (CalcRequest) returns (CalcResponse);
 }
 
+// 全てのrpcの共通リクエストフォーマット
 message CalcRequest {
-    uint32 num1 = 1;
-    uint32 num2 = 2;
+    uint32 num1 = 1;  // 数字1
+    uint32 num2 = 2; // 数字2
 }
 
+// 全てのrpcの共通リスポンスフォーマット
 message CalcResponse {
-    uint32 result = 1;
+    uint32 result = 1; // 計算結果
 }
