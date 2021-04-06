@@ -5,9 +5,11 @@ import (
 	"log"
 	"net"
 
-	pb "server/calc"
+	pb "server/proto"
 
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
+	grpc_validator "github.com/grpc-ecosystem/go-grpc-middleware/validator"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/reflection"
@@ -21,6 +23,10 @@ const (
 type server struct{}
 
 func (s *server) Addition(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
+	// if err := r.Validate(false); err != nil {
+	// 	log.Println(err)
+	// 	return nil, status.Errorf(codes.InvalidArgument, "The number is invalid")
+	// }
 	log.Printf("Recieved : Add %d , %d", r.GetNum1(), r.GetNum2())
 	return &pb.CalcResponse{Result: r.GetNum1() + r.GetNum2()}, nil
 }
@@ -87,7 +93,21 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	s := grpc.NewServer(grpc.UnaryInterceptor(grpc_auth.UnaryServerInterceptor(authenticate)))
+	s := grpc.NewServer(
+		grpc.UnaryInterceptor(
+			grpc_middleware.ChainUnaryServer(
+				grpc_auth.UnaryServerInterceptor(authenticate),
+				grpc_validator.UnaryServerInterceptor(),
+			),
+		),
+		grpc.StreamInterceptor(
+			grpc_middleware.ChainStreamServer(
+				grpc_auth.StreamServerInterceptor(authenticate),
+				grpc_validator.StreamServerInterceptor(),
+			),
+		),
+	)
+
 	pb.RegisterCalcServiceServer(s, &server{})
 	reflection.Register(s)
 	if err := s.Serve(lis); err != nil {
