@@ -9,7 +9,9 @@ import (
 
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/reflection"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -48,6 +50,9 @@ func authenticate(ctx context.Context) (context.Context, error) {
 	log.Printf("Recievd : Token %s", token)
 	if err != nil {
 		return nil, err
+	}
+	if token != "I am jwt token" {
+		return nil, status.Errorf(codes.Unauthenticated, "Token must be 'I am jwt token'")
 	}
 	return ctx, err
 }
