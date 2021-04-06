@@ -140,7 +140,7 @@ var file_calc_proto_rawDesc = []byte{
 	0x12, 0x0a, 0x04, 0x6e, 0x75, 0x6d, 0x32, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x04, 0x6e,
 	0x75, 0x6d, 0x32, 0x22, 0x26, 0x0a, 0x0c, 0x43, 0x61, 0x6c, 0x63, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0d, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0xba, 0x01, 0x0a, 0x0b,
+	0x01, 0x28, 0x0d, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0xe1, 0x01, 0x0a, 0x0b,
 	0x43, 0x61, 0x6c, 0x63, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x27, 0x0a, 0x08, 0x61,
 	0x64, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0c, 0x2e, 0x43, 0x61, 0x6c, 0x63, 0x52, 0x65,
 	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0d, 0x2e, 0x43, 0x61, 0x6c, 0x63, 0x52, 0x65, 0x73, 0x70,
@@ -152,7 +152,10 @@ var file_calc_proto_rawDesc = []byte{
 	0x1a, 0x0d, 0x2e, 0x43, 0x61, 0x6c, 0x63, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x27, 0x0a, 0x08, 0x64, 0x69, 0x76, 0x69, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x0c, 0x2e, 0x43, 0x61,
 	0x6c, 0x63, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0d, 0x2e, 0x43, 0x61, 0x6c, 0x63,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61,
+	0x69, 0x6e, 0x12, 0x0c, 0x2e, 0x43, 0x61, 0x6c, 0x63, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x0d, 0x2e, 0x43, 0x61, 0x6c, 0x63, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -177,12 +180,14 @@ var file_calc_proto_depIdxs = []int32{
 	0, // 1: CalcService.subtraction:input_type -> CalcRequest
 	0, // 2: CalcService.multiplication:input_type -> CalcRequest
 	0, // 3: CalcService.division:input_type -> CalcRequest
-	1, // 4: CalcService.addition:output_type -> CalcResponse
-	1, // 5: CalcService.subtraction:output_type -> CalcResponse
-	1, // 6: CalcService.multiplication:output_type -> CalcResponse
-	1, // 7: CalcService.division:output_type -> CalcResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	0, // 4: CalcService.remain:input_type -> CalcRequest
+	1, // 5: CalcService.addition:output_type -> CalcResponse
+	1, // 6: CalcService.subtraction:output_type -> CalcResponse
+	1, // 7: CalcService.multiplication:output_type -> CalcResponse
+	1, // 8: CalcService.division:output_type -> CalcResponse
+	1, // 9: CalcService.remain:output_type -> CalcResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -255,6 +260,7 @@ type CalcServiceClient interface {
 	Subtraction(ctx context.Context, in *CalcRequest, opts ...grpc.CallOption) (*CalcResponse, error)
 	Multiplication(ctx context.Context, in *CalcRequest, opts ...grpc.CallOption) (*CalcResponse, error)
 	Division(ctx context.Context, in *CalcRequest, opts ...grpc.CallOption) (*CalcResponse, error)
+	Remain(ctx context.Context, in *CalcRequest, opts ...grpc.CallOption) (*CalcResponse, error)
 }
 
 type calcServiceClient struct {
@@ -301,12 +307,22 @@ func (c *calcServiceClient) Division(ctx context.Context, in *CalcRequest, opts 
 	return out, nil
 }
 
+func (c *calcServiceClient) Remain(ctx context.Context, in *CalcRequest, opts ...grpc.CallOption) (*CalcResponse, error) {
+	out := new(CalcResponse)
+	err := c.cc.Invoke(ctx, "/CalcService/remain", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CalcServiceServer is the server API for CalcService service.
 type CalcServiceServer interface {
 	Addition(context.Context, *CalcRequest) (*CalcResponse, error)
 	Subtraction(context.Context, *CalcRequest) (*CalcResponse, error)
 	Multiplication(context.Context, *CalcRequest) (*CalcResponse, error)
 	Division(context.Context, *CalcRequest) (*CalcResponse, error)
+	Remain(context.Context, *CalcRequest) (*CalcResponse, error)
 }
 
 // UnimplementedCalcServiceServer can be embedded to have forward compatible implementations.
@@ -324,6 +340,9 @@ func (*UnimplementedCalcServiceServer) Multiplication(context.Context, *CalcRequ
 }
 func (*UnimplementedCalcServiceServer) Division(context.Context, *CalcRequest) (*CalcResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Division not implemented")
+}
+func (*UnimplementedCalcServiceServer) Remain(context.Context, *CalcRequest) (*CalcResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Remain not implemented")
 }
 
 func RegisterCalcServiceServer(s *grpc.Server, srv CalcServiceServer) {
@@ -402,6 +421,24 @@ func _CalcService_Division_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CalcService_Remain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CalcRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CalcServiceServer).Remain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CalcService/Remain",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CalcServiceServer).Remain(ctx, req.(*CalcRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _CalcService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "CalcService",
 	HandlerType: (*CalcServiceServer)(nil),
@@ -421,6 +458,10 @@ var _CalcService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "division",
 			Handler:    _CalcService_Division_Handler,
+		},
+		{
+			MethodName: "remain",
+			Handler:    _CalcService_Remain_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

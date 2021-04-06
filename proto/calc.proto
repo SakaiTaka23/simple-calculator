@@ -5,6 +5,7 @@ service CalcService {
     rpc subtraction (CalcRequest) returns (CalcResponse);
     rpc multiplication (CalcRequest) returns (CalcResponse);
     rpc division (CalcRequest) returns (CalcResponse);
+    rpc remain (CalcRequest) returns (CalcResponse);
 }
 
 message CalcRequest {
