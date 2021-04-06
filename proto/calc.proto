@@ -1,10 +1,5 @@
 syntax = "proto3";
 
-// package proto;
-
-import "validate/validate.proto";
-
-
 // 四則演算をするためのサービス
 service CalcService {
     // 足し算
@@ -21,8 +16,8 @@ service CalcService {
 
 // 全てのrpcの共通リクエストフォーマット
 message CalcRequest {
-    uint32 num1 = 1 [(validate.rules).uint32 = {gte:1,lte:100}];  // 数字1
-    uint32 num2 = 2 [(validate.rules).uint32 = {gte:1,lte:100}]; // 数字2
+    uint32 num1 = 1;  // 数字1
+    uint32 num2 = 2; // 数字2
 }
 
 // 全てのrpcの共通リスポンスフォーマット

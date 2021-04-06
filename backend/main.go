@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	pb "server/proto"
+	pb "server/calc"
 
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 	"google.golang.org/grpc"
@@ -87,10 +87,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	//s := grpc.NewServer(grpc.UnaryInterceptor(grpc_auth.UnaryServerInterceptor(authenticate),grpc_validator.UnaryServerInterceptor()))
-	s := grpc.NewServer(grpc.ChainUnaryInterceptor(
-		grpc_auth.UnaryServerInterceptor(authenticate),
-	))
+	s := grpc.NewServer(grpc.UnaryInterceptor(grpc_auth.UnaryServerInterceptor(authenticate)))
 	pb.RegisterCalcServiceServer(s, &server{})
 	reflection.Register(s)
 	if err := s.Serve(lis); err != nil {
