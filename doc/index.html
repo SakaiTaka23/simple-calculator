@@ -167,15 +167,15 @@
           <a href="#calc.proto">calc.proto</a>
           <ul>
             <li>
-              <a href="#.CalcRequest"><span class="badge">M</span>CalcRequest</a>
+              <a href="#proto.CalcRequest"><span class="badge">M</span>CalcRequest</a>
             </li>
 
             <li>
-              <a href="#.CalcResponse"><span class="badge">M</span>CalcResponse</a>
+              <a href="#proto.CalcResponse"><span class="badge">M</span>CalcResponse</a>
             </li>
 
             <li>
-              <a href="#.CalcService"><span class="badge">S</span>CalcService</a>
+              <a href="#proto.CalcService"><span class="badge">S</span>CalcService</a>
             </li>
           </ul>
         </li>
@@ -190,7 +190,7 @@
     </div>
     <p></p>
 
-    <h3 id=".CalcRequest">CalcRequest</h3>
+    <h3 id="proto.CalcRequest">CalcRequest</h3>
     <p>全てのrpcの共通リクエストフォーマット</p>
 
     <table class="field-table">
@@ -219,7 +219,40 @@
       </tbody>
     </table>
 
-    <h3 id=".CalcResponse">CalcResponse</h3>
+    <h4>Validated Fields</h4>
+    <table>
+      <thead>
+        <tr>
+          <td>Field</td>
+          <td>Validations</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>num1</td>
+          <td>
+            <ul>
+              <li>int_gt: 0</li>
+
+              <li>int_lt: 100</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td>num2</td>
+          <td>
+            <ul>
+              <li>int_gt: 0</li>
+
+              <li>int_lt: 100</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="proto.CalcResponse">CalcResponse</h3>
     <p>全てのrpcの共通リスポンスフォーマット</p>
 
     <table class="field-table">
@@ -241,7 +274,29 @@
       </tbody>
     </table>
 
-    <h3 id=".CalcService">CalcService</h3>
+    <h4>Validated Fields</h4>
+    <table>
+      <thead>
+        <tr>
+          <td>Field</td>
+          <td>Validations</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>result</td>
+          <td>
+            <ul>
+              <li>int_gt: 0</li>
+
+              <li>int_lt: 10000</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="proto.CalcService">CalcService</h3>
     <p>四則演算をするためのサービス</p>
     <table class="enum-table">
       <thead>
@@ -255,36 +310,36 @@
       <tbody>
         <tr>
           <td>addition</td>
-          <td><a href="#CalcRequest">.CalcRequest</a></td>
-          <td><a href="#CalcResponse">.CalcResponse</a></td>
+          <td><a href="#proto.CalcRequest">CalcRequest</a></td>
+          <td><a href="#proto.CalcResponse">CalcResponse</a></td>
           <td><p>足し算</p></td>
         </tr>
 
         <tr>
           <td>subtraction</td>
-          <td><a href="#CalcRequest">.CalcRequest</a></td>
-          <td><a href="#CalcResponse">.CalcResponse</a></td>
+          <td><a href="#proto.CalcRequest">CalcRequest</a></td>
+          <td><a href="#proto.CalcResponse">CalcResponse</a></td>
           <td><p>引き算</p></td>
         </tr>
 
         <tr>
           <td>multiplication</td>
-          <td><a href="#CalcRequest">.CalcRequest</a></td>
-          <td><a href="#CalcResponse">.CalcResponse</a></td>
+          <td><a href="#proto.CalcRequest">CalcRequest</a></td>
+          <td><a href="#proto.CalcResponse">CalcResponse</a></td>
           <td><p>掛け算</p></td>
         </tr>
 
         <tr>
           <td>division</td>
-          <td><a href="#CalcRequest">.CalcRequest</a></td>
-          <td><a href="#CalcResponse">.CalcResponse</a></td>
+          <td><a href="#proto.CalcRequest">CalcRequest</a></td>
+          <td><a href="#proto.CalcResponse">CalcResponse</a></td>
           <td><p>割り算</p></td>
         </tr>
 
         <tr>
           <td>remain</td>
-          <td><a href="#CalcRequest">.CalcRequest</a></td>
-          <td><a href="#CalcResponse">.CalcResponse</a></td>
+          <td><a href="#proto.CalcRequest">CalcRequest</a></td>
+          <td><a href="#proto.CalcResponse">CalcResponse</a></td>
           <td><p>余り計算 認証必須</p></td>
         </tr>
       </tbody>
