@@ -25,7 +25,7 @@ db:
 	$(UP) db
 
 tidy:
-	$(RUN) backend go mod tidy
+	$(COMPOSE) run back go mod tidy
 
 protoc:
 	$(info Making code from proto files)
