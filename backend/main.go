@@ -5,8 +5,8 @@ import (
 	"net"
 
 	"server/handler"
+	"server/handler/auth"
 	pb "server/proto"
-	"server/utils"
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
@@ -28,13 +28,13 @@ func main() {
 	s := grpc.NewServer(
 		grpc.UnaryInterceptor(
 			grpc_middleware.ChainUnaryServer(
-				grpc_auth.UnaryServerInterceptor(utils.Authenticate),
+				grpc_auth.UnaryServerInterceptor(auth.Authenticate),
 				grpc_validator.UnaryServerInterceptor(),
 			),
 		),
 		grpc.StreamInterceptor(
 			grpc_middleware.ChainStreamServer(
-				grpc_auth.StreamServerInterceptor(utils.Authenticate),
+				grpc_auth.StreamServerInterceptor(auth.Authenticate),
 				grpc_validator.StreamServerInterceptor(),
 			),
 		),
