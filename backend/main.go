@@ -20,7 +20,9 @@ const (
 	port = ":9090"
 )
 
-type server struct{}
+type server struct {
+	pb.UnimplementedCalcServiceServer
+}
 
 func (s *server) Addition(ctx context.Context, r *pb.CalcRequest) (*pb.CalcResponse, error) {
 	// if err := r.Validate(false); err != nil {
