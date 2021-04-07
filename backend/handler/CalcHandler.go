@@ -6,7 +6,7 @@ import (
 
 	pb "server/proto"
 
-	"server/handler/auth"
+	"server/config"
 	"server/utils"
 )
 
@@ -46,7 +46,7 @@ func (s *CalcServiceServer) AuthFuncOverride(ctx context.Context, fullMethodName
 		return ctx, nil
 	}
 
-	ctx, err := auth.Authenticate(ctx)
+	ctx, err := config.Authenticate(ctx)
 	if err != nil {
 		return ctx, err
 	}
