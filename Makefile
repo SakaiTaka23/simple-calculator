@@ -1,15 +1,17 @@
 COMPOSE = docker-compose
 UP = $(COMPOSE) up
 RUN = docker run
+RUN_RM = $(RUN) --rm
 
-PROTO_CMD = docker run --rm -v $(PWD):$(PWD) \
+PROTO_CMD = $(RUN_RM) \
+	-v $(PWD):$(PWD) \
 	-w $(PWD) znly/protoc:0.4.0 \
 	-I ./proto \
 	--go_out=plugins=grpc:./backend/proto \
 	--govalidators_out=./backend/proto \
 	proto/*.proto
 
-DOC_CMD = docker run --rm \
+DOC_CMD = $(RUN_RM) \
   	-v $(PWD)/doc:/out \
   	-v $(PWD)/proto:/protos \
   	pseudomuto/protoc-gen-doc
