@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "github.com/mwitkow/go-proto-validators/validator.proto";
 package proto;
+option go_package = ".;proto";
 
 // 四則演算をするためのサービス
 service CalcService {
