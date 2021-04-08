@@ -41,7 +41,7 @@ func (s *CalcServiceServer) Remain(ctx context.Context, r *pb.CalcRequest) (*pb.
 
 func (s *CalcServiceServer) AuthFuncOverride(ctx context.Context, fullMethodName string) (context.Context, error) {
 	log.Println("client is calling method:", fullMethodName)
-	skipAuth := []string{"/CalcService/Addition", "/CalcService/Division", "/CalcService/Multiplication", "/CalcService/Subtraction"}
+	skipAuth := []string{"/proto.CalcService/addition", "/proto.CalcService/division", "/proto.CalcService/multiplication", "/proto.CalcService/subtraction"}
 	if utils.Contains(skipAuth, fullMethodName) {
 		return ctx, nil
 	}
