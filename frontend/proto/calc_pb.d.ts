@@ -1,7 +1,6 @@
-import * as jspb from 'google-protobuf'
+import * as jspb from 'google-protobuf';
 
-import * as github_com_mwitkow_go$proto$validators_validator_pb from './github.com/mwitkow/go-proto-validators/validator_pb';
-
+// import * as github_com_mwitkow_go$proto$validators_validator_pb from './github.com/mwitkow/go-proto-validators/validator_pb';
 
 export class CalcRequest extends jspb.Message {
   getNum1(): number;
@@ -20,9 +19,9 @@ export class CalcRequest extends jspb.Message {
 
 export namespace CalcRequest {
   export type AsObject = {
-    num1: number,
-    num2: number,
-  }
+    num1: number;
+    num2: number;
+  };
 }
 
 export class CalcResponse extends jspb.Message {
@@ -39,7 +38,6 @@ export class CalcResponse extends jspb.Message {
 
 export namespace CalcResponse {
   export type AsObject = {
-    result: number,
-  }
+    result: number;
+  };
 }
-

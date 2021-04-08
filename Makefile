@@ -11,7 +11,7 @@ PROTO_CMD_BACK = protoc \
 
 PROTO_CMD_FRONT =  protoc \
 	-I=proto proto/*.proto \
-	--js_out=import_style=commonjs:frontend/proto \
+	--js_out=import_style=commonjs,binary:frontend/proto \
 	--grpc-web_out=import_style=typescript,mode=grpcwebtext:frontend/proto
 
 DOC_CMD = $(RUN_RM) \

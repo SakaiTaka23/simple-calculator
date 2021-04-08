@@ -15,8 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var github_com_mwitkow_go$proto$validators_validator_pb = require('./github.com/mwitkow/go-proto-validators/validator_pb.js');
-goog.object.extend(proto, github_com_mwitkow_go$proto$validators_validator_pb);
+// var github_com_mwitkow_go$proto$validators_validator_pb = require('./github.com/mwitkow/go-proto-validators/validator_pb.js');
+// goog.object.extend(proto, github_com_mwitkow_go$proto$validators_validator_pb);
 goog.exportSymbol('proto.proto.CalcRequest', null, global);
 goog.exportSymbol('proto.proto.CalcResponse', null, global);
 /**
@@ -29,7 +29,7 @@ goog.exportSymbol('proto.proto.CalcResponse', null, global);
  * @extends {jspb.Message}
  * @constructor
  */
-proto.proto.CalcRequest = function(opt_data) {
+proto.proto.CalcRequest = function (opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.proto.CalcRequest, jspb.Message);
@@ -50,7 +50,7 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.proto.CalcResponse = function(opt_data) {
+proto.proto.CalcResponse = function (opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.proto.CalcResponse, jspb.Message);
@@ -62,60 +62,56 @@ if (goog.DEBUG && !COMPILED) {
   proto.proto.CalcResponse.displayName = 'proto.proto.CalcResponse';
 }
 
-
-
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.proto.CalcRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.proto.CalcRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.proto.CalcRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.proto.CalcRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    num1: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    num2: jspb.Message.getFieldWithDefault(msg, 2, 0)
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.proto.CalcRequest.prototype.toObject = function (opt_includeInstance) {
+    return proto.proto.CalcRequest.toObject(opt_includeInstance, this);
   };
 
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.proto.CalcRequest} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.proto.CalcRequest.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        num1: jspb.Message.getFieldWithDefault(msg, 1, 0),
+        num2: jspb.Message.getFieldWithDefault(msg, 2, 0),
+      };
 
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.proto.CalcRequest}
  */
-proto.proto.CalcRequest.deserializeBinary = function(bytes) {
+proto.proto.CalcRequest.deserializeBinary = function (bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.proto.CalcRequest;
+  var msg = new proto.proto.CalcRequest();
   return proto.proto.CalcRequest.deserializeBinaryFromReader(msg, reader);
 };
-
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -124,40 +120,38 @@ proto.proto.CalcRequest.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.proto.CalcRequest}
  */
-proto.proto.CalcRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.proto.CalcRequest.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setNum1(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setNum2(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint32());
+        msg.setNum1(value);
+        break;
+      case 2:
+        var value = /** @type {number} */ (reader.readUint32());
+        msg.setNum2(value);
+        break;
+      default:
+        reader.skipField();
+        break;
     }
   }
   return msg;
 };
 
-
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.proto.CalcRequest.prototype.serializeBinary = function() {
+proto.proto.CalcRequest.prototype.serializeBinary = function () {
   var writer = new jspb.BinaryWriter();
   proto.proto.CalcRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
-
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -166,115 +160,99 @@ proto.proto.CalcRequest.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.proto.CalcRequest.serializeBinaryToWriter = function(message, writer) {
+proto.proto.CalcRequest.serializeBinaryToWriter = function (message, writer) {
   var f = undefined;
   f = message.getNum1();
   if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
+    writer.writeUint32(1, f);
   }
   f = message.getNum2();
   if (f !== 0) {
-    writer.writeUint32(
-      2,
-      f
-    );
+    writer.writeUint32(2, f);
   }
 };
-
 
 /**
  * optional uint32 num1 = 1;
  * @return {number}
  */
-proto.proto.CalcRequest.prototype.getNum1 = function() {
+proto.proto.CalcRequest.prototype.getNum1 = function () {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
-
 
 /**
  * @param {number} value
  * @return {!proto.proto.CalcRequest} returns this
  */
-proto.proto.CalcRequest.prototype.setNum1 = function(value) {
+proto.proto.CalcRequest.prototype.setNum1 = function (value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
-
 
 /**
  * optional uint32 num2 = 2;
  * @return {number}
  */
-proto.proto.CalcRequest.prototype.getNum2 = function() {
+proto.proto.CalcRequest.prototype.getNum2 = function () {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
-
 
 /**
  * @param {number} value
  * @return {!proto.proto.CalcRequest} returns this
  */
-proto.proto.CalcRequest.prototype.setNum2 = function(value) {
+proto.proto.CalcRequest.prototype.setNum2 = function (value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
 
-
-
-
-
 if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.proto.CalcResponse.prototype.toObject = function(opt_includeInstance) {
-  return proto.proto.CalcResponse.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.proto.CalcResponse} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.proto.CalcResponse.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    result: jspb.Message.getFieldWithDefault(msg, 1, 0)
+  /**
+   * Creates an object representation of this proto.
+   * Field names that are reserved in JavaScript and will be renamed to pb_name.
+   * Optional fields that are not set will be set to undefined.
+   * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+   * For the list of reserved names please see:
+   *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+   * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+   *     JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @return {!Object}
+   */
+  proto.proto.CalcResponse.prototype.toObject = function (opt_includeInstance) {
+    return proto.proto.CalcResponse.toObject(opt_includeInstance, this);
   };
 
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
+  /**
+   * Static version of the {@see toObject} method.
+   * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+   *     the JSPB instance for transitional soy proto support:
+   *     http://goto/soy-param-migration
+   * @param {!proto.proto.CalcResponse} msg The msg instance to transform.
+   * @return {!Object}
+   * @suppress {unusedLocalVariables} f is only used for nested messages
+   */
+  proto.proto.CalcResponse.toObject = function (includeInstance, msg) {
+    var f,
+      obj = {
+        result: jspb.Message.getFieldWithDefault(msg, 1, 0),
+      };
 
+    if (includeInstance) {
+      obj.$jspbMessageInstance = msg;
+    }
+    return obj;
+  };
+}
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.proto.CalcResponse}
  */
-proto.proto.CalcResponse.deserializeBinary = function(bytes) {
+proto.proto.CalcResponse.deserializeBinary = function (bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.proto.CalcResponse;
+  var msg = new proto.proto.CalcResponse();
   return proto.proto.CalcResponse.deserializeBinaryFromReader(msg, reader);
 };
-
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -283,36 +261,34 @@ proto.proto.CalcResponse.deserializeBinary = function(bytes) {
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.proto.CalcResponse}
  */
-proto.proto.CalcResponse.deserializeBinaryFromReader = function(msg, reader) {
+proto.proto.CalcResponse.deserializeBinaryFromReader = function (msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setResult(value);
-      break;
-    default:
-      reader.skipField();
-      break;
+      case 1:
+        var value = /** @type {number} */ (reader.readUint32());
+        msg.setResult(value);
+        break;
+      default:
+        reader.skipField();
+        break;
     }
   }
   return msg;
 };
 
-
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.proto.CalcResponse.prototype.serializeBinary = function() {
+proto.proto.CalcResponse.prototype.serializeBinary = function () {
   var writer = new jspb.BinaryWriter();
   proto.proto.CalcResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
-
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -321,34 +297,28 @@ proto.proto.CalcResponse.prototype.serializeBinary = function() {
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.proto.CalcResponse.serializeBinaryToWriter = function(message, writer) {
+proto.proto.CalcResponse.serializeBinaryToWriter = function (message, writer) {
   var f = undefined;
   f = message.getResult();
   if (f !== 0) {
-    writer.writeUint32(
-      1,
-      f
-    );
+    writer.writeUint32(1, f);
   }
 };
-
 
 /**
  * optional uint32 result = 1;
  * @return {number}
  */
-proto.proto.CalcResponse.prototype.getResult = function() {
+proto.proto.CalcResponse.prototype.getResult = function () {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
-
 
 /**
  * @param {number} value
  * @return {!proto.proto.CalcResponse} returns this
  */
-proto.proto.CalcResponse.prototype.setResult = function(value) {
+proto.proto.CalcResponse.prototype.setResult = function (value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
-
 
 goog.object.extend(exports, proto.proto);
