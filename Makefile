@@ -36,3 +36,6 @@ protoc-doc: proto/*.proto
 	$(info Making docs from proto files)
 	@$(DOC_CMD)
 	
+doc-open:
+	$(info See the doc on the browser)
+	open doc/index.html
