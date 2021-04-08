@@ -13,7 +13,7 @@ func Authenticate(ctx context.Context) (context.Context, error) {
 	token, err := grpc_auth.AuthFromMD(ctx, "bearer")
 	log.Printf("Recieved : Token %s", token)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.Unauthenticated, "Token is not set")
 	}
 	if token != "I am jwt token" {
 		return nil, status.Errorf(codes.Unauthenticated, "Token must be 'I am jwt token'")
