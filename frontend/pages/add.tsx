@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { CalcServiceClient } from '../calc/CalcServiceClientPb';
-import { CalcRequest } from '../calc/calc_pb';
+import { CalcServiceClient } from '../proto/CalcServiceClientPb';
+import { CalcRequest } from '../proto/calc_pb';
 
 const Add = () => {
   const [a, setA] = useState(0);
