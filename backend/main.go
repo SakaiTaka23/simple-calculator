@@ -8,10 +8,6 @@ import (
 	"server/handler"
 	pb "server/proto"
 
-	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
-	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
-	grpc_validator "github.com/grpc-ecosystem/go-grpc-middleware/validator"
-	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -25,20 +21,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	s := grpc.NewServer(
-		grpc.UnaryInterceptor(
-			grpc_middleware.ChainUnaryServer(
-				grpc_auth.UnaryServerInterceptor(config.Authenticate),
-				grpc_validator.UnaryServerInterceptor(),
-			),
-		),
-		grpc.StreamInterceptor(
-			grpc_middleware.ChainStreamServer(
-				grpc_auth.StreamServerInterceptor(config.Authenticate),
-				grpc_validator.StreamServerInterceptor(),
-			),
-		),
-	)
+	s := config.CreateServer()
 
 	pb.RegisterCalcServiceServer(s, &handler.CalcServiceServer{})
 	reflection.Register(s)
