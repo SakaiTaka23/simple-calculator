@@ -3,16 +3,20 @@ UP = $(COMPOSE) up
 RUN = docker run
 RUN_RM = $(RUN) --rm
 
-PROTO_CMD_BACK = protoc \
-	-I ./proto proto/*.proto \
-    --go_out=./backend/proto --go_opt=paths=source_relative \
-    --go-grpc_out=./backend/proto --go-grpc_opt=paths=source_relative \
-    --govalidators_out=./backend/proto \
+PROTO_DIR = proto/*.proto
+PROTO_OUT_BACK = backend/proto
+PROTO_OUT_FRONT = frontend/proto
 
-PROTO_CMD_FRONT =  protoc \
-	-I=proto proto/*.proto \
-	--js_out=import_style=commonjs,binary:frontend/proto \
-	--grpc-web_out=import_style=typescript,mode=grpcwebtext:frontend/proto
+PROTO_CMD_BACK = protoc \
+	-I=proto $(PROTO_DIR) \
+    --go_out=$(PROTO_OUT_BACK) --go_opt=paths=source_relative \
+    --go-grpc_out=$(PROTO_OUT_BACK) --go-grpc_opt=paths=source_relative \
+    --govalidators_out=$(PROTO_OUT_BACK) \
+
+PROTO_CMD_FRONT = protoc \
+	-I=proto $(PROTO_DIR) \
+	--js_out=import_style=commonjs,binary:$(PROTO_OUT_FRONT) \
+	--grpc-web_out=import_style=typescript,mode=grpcwebtext:$(PROTO_OUT_FRONT)
 
 DOC_CMD = $(RUN_RM) \
   	-v $(PWD)/doc:/out \
