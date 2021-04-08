@@ -31,6 +31,9 @@ db:
 tidy:
 	$(COMPOSE) run back go mod tidy
 
+protoc: protoc-back protoc-front
+	$(info Made code for backend and frontend)
+
 protoc-back:
 	$(info Making code from proto files for backend)
 	@rm -f backend/proto/*.proto
