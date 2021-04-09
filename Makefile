@@ -32,6 +32,9 @@ front:
 db:
 	$(UP) db
 
+build:
+	$(COMPOSE) build
+
 tidy:
 	$(COMPOSE) run back go mod tidy
 
