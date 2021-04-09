@@ -58,7 +58,8 @@ const getRemainResult = async ({ Num1, Num2 }: formType) => {
   request.setNum1(Num1);
   request.setNum2(Num2);
   const client = new CalcServiceClient('http://localhost:8080');
-  const response = await client.remain(request, {});
+  const metaData = { authorization: 'bearer I am jwt token' };
+  const response = await client.remain(request, metaData);
   return response;
 };
 

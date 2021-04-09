@@ -18,6 +18,9 @@ const Nav = () => {
       <Link href='/mult'>
         <a>掛け算</a>
       </Link>
+      <Link href='/remain'>
+        <a>余り計算</a>
+      </Link>
     </AppBar>
   );
 };
