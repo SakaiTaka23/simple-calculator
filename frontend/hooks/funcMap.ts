@@ -13,7 +13,7 @@ const funcMap = (sign: '+' | '-' | '*' | '/' | '%') => {
     case '/':
       return getDivResult;
     case '%':
-      return getModResult;
+      return getRemainResult;
   }
 };
 
@@ -31,7 +31,7 @@ const getSubResult = async ({ Num1, Num2 }: formType) => {
   request.setNum1(Num1);
   request.setNum2(Num2);
   const client = new CalcServiceClient('http://localhost:8080');
-  const response = await client.addition(request, {});
+  const response = await client.subtraction(request, {});
   return response;
 };
 
@@ -40,7 +40,7 @@ const getMultResult = async ({ Num1, Num2 }: formType) => {
   request.setNum1(Num1);
   request.setNum2(Num2);
   const client = new CalcServiceClient('http://localhost:8080');
-  const response = await client.addition(request, {});
+  const response = await client.multiplication(request, {});
   return response;
 };
 
@@ -49,16 +49,16 @@ const getDivResult = async ({ Num1, Num2 }: formType) => {
   request.setNum1(Num1);
   request.setNum2(Num2);
   const client = new CalcServiceClient('http://localhost:8080');
-  const response = await client.addition(request, {});
+  const response = await client.division(request, {});
   return response;
 };
 
-const getModResult = async ({ Num1, Num2 }: formType) => {
+const getRemainResult = async ({ Num1, Num2 }: formType) => {
   const request = new CalcRequest();
   request.setNum1(Num1);
   request.setNum2(Num2);
   const client = new CalcServiceClient('http://localhost:8080');
-  const response = await client.addition(request, {});
+  const response = await client.remain(request, {});
   return response;
 };
 
