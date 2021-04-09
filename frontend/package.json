@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "google-protobuf": "^3.15.5",
     "grpc-web": "^1.2.1",
     "next": "10.0.8",
