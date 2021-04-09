@@ -12,10 +12,10 @@ const Nav = () => {
       <Link href='/sub'>
         <a>引き算</a>
       </Link>
-      <Link href='/mult'>
+      <Link href='/div'>
         <a>割り算</a>
       </Link>
-      <Link href='/div'>
+      <Link href='/mult'>
         <a>掛け算</a>
       </Link>
     </AppBar>
