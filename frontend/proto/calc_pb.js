@@ -269,7 +269,7 @@ proto.proto.CalcResponse.deserializeBinaryFromReader = function (msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
       case 1:
-        var value = /** @type {number} */ (reader.readUint32());
+        var value = /** @type {number} */ (reader.readInt32());
         msg.setResult(value);
         break;
       default:
@@ -301,12 +301,12 @@ proto.proto.CalcResponse.serializeBinaryToWriter = function (message, writer) {
   var f = undefined;
   f = message.getResult();
   if (f !== 0) {
-    writer.writeUint32(1, f);
+    writer.writeInt32(1, f);
   }
 };
 
 /**
- * optional uint32 result = 1;
+ * optional int32 result = 1;
  * @return {number}
  */
 proto.proto.CalcResponse.prototype.getResult = function () {

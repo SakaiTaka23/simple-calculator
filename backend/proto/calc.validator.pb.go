@@ -32,11 +32,11 @@ func (this *CalcRequest) Validate() error {
 	return nil
 }
 func (this *CalcResponse) Validate() error {
-	if !(this.Result > 0) {
-		return github_com_mwitkow_go_proto_validators.FieldError("Result", fmt.Errorf(`value '%v' must be greater than '0'`, this.Result))
+	if !(this.Result > -100) {
+		return github_com_mwitkow_go_proto_validators.FieldError("Result", fmt.Errorf(`value '%v' must be greater than '-100'`, this.Result))
 	}
-	if !(this.Result < 10000) {
-		return github_com_mwitkow_go_proto_validators.FieldError("Result", fmt.Errorf(`value '%v' must be less than '10000'`, this.Result))
+	if !(this.Result < 9802) {
+		return github_com_mwitkow_go_proto_validators.FieldError("Result", fmt.Errorf(`value '%v' must be less than '9802'`, this.Result))
 	}
 	return nil
 }

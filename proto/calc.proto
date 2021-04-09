@@ -26,5 +26,5 @@ message CalcRequest {
 
 // 全てのrpcの共通リスポンスフォーマット
 message CalcResponse {
-    uint32 result = 1 [(validator.field) = {int_gt: 0,int_lt: 10000}]; // 計算結果
+    int32 result = 1 [(validator.field) = {int_gt: -100,int_lt: 9802}]; // 計算結果
 }
