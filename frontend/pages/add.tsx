@@ -3,10 +3,11 @@ import { FormProvider } from 'react-hook-form';
 import InputNum1 from '../components/InputNum1';
 import InputNum2 from '../components/InputNum2';
 import ShowResult from '../components/showResult';
+import { funcMap } from '../hooks/funcMap';
 import useCalc from '../hooks/useCalc';
 
 const Add = () => {
-  const { methods, handleChange, Num1, Num2, result } = useCalc();
+  const { methods, handleChange, Num1, Num2, result } = useCalc(funcMap('+'));
 
   return (
     <>
