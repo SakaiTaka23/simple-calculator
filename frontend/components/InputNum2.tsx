@@ -9,7 +9,7 @@ const InputNum2 = () => {
       type='number'
       min='1'
       max='99'
-      {...register('Num1', {
+      {...register('Num2', {
         required: true,
         valueAsNumber: true,
         min: 1,
