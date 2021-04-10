@@ -21,7 +21,8 @@ PROTO_CMD_FRONT = protoc \
 DOC_CMD = $(RUN_RM) \
   	-v $(PWD)/doc:/out \
   	-v $(PWD)/proto:/protos \
-  	pseudomuto/protoc-gen-doc
+  	pseudomuto/protoc-gen-doc \
+	--doc_opt=out/template.tmpl,index.html
 
 up:
 	$(UP)
@@ -55,7 +56,7 @@ protoc-front:
 protoc-doc: proto/*.proto
 	$(info Making docs from proto files)
 	@$(DOC_CMD)
-	
+
 doc-open:
 	$(info See the doc on the browser)
 	open doc/index.html
