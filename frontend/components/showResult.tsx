@@ -1,3 +1,4 @@
+import Typography from '@material-ui/core/Typography';
 import React, { FC } from 'react';
 
 type Prop = {
@@ -8,11 +9,7 @@ type Prop = {
 };
 
 const ShowResult: FC<Prop> = ({ Num1, Num2, sign, result }) => {
-  return (
-    <div>
-      <span>{`${Num1} ${sign} ${Num2} = ${result}`}</span>
-    </div>
-  );
+  return <Typography variant='h3'>{`${Num1} ${sign} ${Num2} = ${result}`}</Typography>;
 };
 
 export default ShowResult;

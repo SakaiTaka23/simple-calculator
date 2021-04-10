@@ -19,7 +19,6 @@ const CalcTemplate: FC<Prop> = ({ sign }) => {
         <form onChange={methods.handleSubmit(handleChange)}>
           <InputNum1 />
           <InputNum2 />
-          <button type='submit'>Submit</button>
         </form>
       </FormProvider>
       <ShowResult Num1={Num1} Num2={Num2} sign={sign} result={result} />
