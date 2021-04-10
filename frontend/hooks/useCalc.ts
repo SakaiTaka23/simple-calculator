@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { CalcResponse } from '../proto/calc_pb';
 import { formType } from '../type/formType';
 
-const useCalc = (getResult: ({ Num1, Num2 }: any) => Promise<any>) => {
+const useCalc = (getResult: ({ Num1, Num2 }: formType) => Promise<CalcResponse>) => {
   const [Num1, setNum1] = useState(1);
   const [Num2, setNum2] = useState(1);
   const [result, setResult] = useState(2);
@@ -12,6 +13,10 @@ const useCalc = (getResult: ({ Num1, Num2 }: any) => Promise<any>) => {
       Num2: 1,
     },
   });
+
+  useEffect(() => {
+    handleChange({ Num1, Num2 });
+  }, []);
 
   const handleChange = async (data: formType) => {
     console.log(data);
